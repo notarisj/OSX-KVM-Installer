@@ -162,10 +162,12 @@ fi
 # Title: Create macOS Disk Image
 # -------------------------------------------
 echo "-------------------------------------------------------"
-echo "Step 7: Ask for disk size and create disk image"
+echo "Step 7: Create macOS Disk Image"
 echo "-------------------------------------------------------"
 if [ ! -f "mac_hdd_ng.img" ]; then
-    read -p "Enter the desired size for the macOS disk image (e.g., 64G): " disk_size
+    # Provide a default size of 64G if the user does not input a size
+    read -p "Enter the desired size for the macOS disk image [Default is 64G]: " disk_size
+    disk_size=${disk_size:-64G}
     qemu-img create -f qcow2 mac_hdd_ng.img $disk_size
 else
     echo "Disk image already exists. Skipping creation."
