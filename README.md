@@ -2,21 +2,29 @@
 
 This repository contains a script that automates the installation of macOS on KVM (Kernel-based Virtual Machine), with due credit to the resources provided by the [OSX-KVM](https://github.com/kholia/OSX-KVM) repository and its contributors.
 
+After you run the script for the first time it will clone kholia's OSX-KVM repo, create a bootable image with the selected version of macOS, create a virtual disk image with the specified size and start QEMU with macOS recovery mode. When the installation is done you can rerun the script to start the vm, it will not execute anything twice.
+
 ## Prerequisites
 
 - A Linux system with `apt` package manager (like Ubuntu)
 - Virtualization enabled in BIOS
 
-## Installation
+## Usage
 
-Before running the script, ensure you have `git` and `sudo` privileges on your system. Then, clone this repository:
+Before running the script, ensure you have `sudo` privileges on your system. Use the following command to automatically execute the script:
+
+```bash
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/notarisj/OSX-KVM-Installer/main/setup-macos-kvm.sh)"
+```
+
+Alternatively, you can clone the repo:
 
 ```bash
 git clone https://github.com/notarisj/OSX-KVM-Installer.git
 cd OSX-KVM-Installer
 ```
 
-Make the script executable:
+Make the script executable (if needed):
 
 ```bash
 chmod +x setup-macos-kvm.sh
@@ -30,7 +38,7 @@ sudo ./setup-macos-kvm.sh
 
 Follow the on-screen instructions to complete the installation.
 
-## Features
+## Basic Features
 
 The script includes:
 
