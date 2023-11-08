@@ -152,7 +152,7 @@ fi
 echo "-------------------------------------------------------"
 echo "Step 6: Convert the downloaded dmg to img"
 echo "-------------------------------------------------------"
-if [ ! -f "BaseSystem.dmg" ]; then
+if [ ! -f "BaseSystem.img" ]; then
     dmg2img -i BaseSystem.dmg -o BaseSystem.img
 else
     echo "BaseSystem.img already exists. Skipping conversion."
