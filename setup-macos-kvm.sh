@@ -16,7 +16,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # ----------------------------
-# Title: Package Installation
+# Title: Install Packages
 # ----------------------------
 echo "-------------------------------------------------------"
 echo "Step 1: Install Packages"
@@ -90,7 +90,7 @@ fi
 cd "$OSX_KVM_DIR" || { echo "Failed to change to OSX-KVM directory. Exiting."; exit 1; }
 
 # --------------------------
-# Title: KVM Configuration
+# Title: Configure KVM for CPU type
 # --------------------------
 echo "-------------------------------------------------------"
 echo "Step 3: Configure KVM for CPU type"
@@ -119,10 +119,10 @@ else
 fi
 
 # -------------------------
-# Title: User Group Update
+# Title: Add current user to KVM groups
 # -------------------------
 echo "-------------------------------------------------------"
-echo "Step 4: Add the current user to KVM groups"
+echo "Step 4: Add current user to KVM groups"
 echo "-------------------------------------------------------"
 # Check if the user is already in the required groups
 if groups | grep -qw "kvm" && groups | grep -qw "libvirt" && groups | grep -qw "input"; then
@@ -138,7 +138,7 @@ fi
 # Title: Fetch macOS Installation
 # ---------------------------------
 echo "-------------------------------------------------------"
-echo "Step 5: Execute the fetch-macOS script"
+echo "Step 5: Fetch macOS Installation"
 echo "-------------------------------------------------------"
 if [ ! -f "BaseSystem.dmg" ]; then
     ./fetch-macOS-v2.py
@@ -150,7 +150,7 @@ fi
 # Title: Convert dmg to img
 # ------------------------------
 echo "-------------------------------------------------------"
-echo "Step 6: Convert the downloaded dmg to img"
+echo "Step 6: Convert dmg to img"
 echo "-------------------------------------------------------"
 if [ ! -f "BaseSystem.img" ]; then
     dmg2img -i BaseSystem.dmg -o BaseSystem.img
@@ -265,7 +265,7 @@ done
 # Title: Launch macOS VM
 # -------------------------
 echo "-------------------------------------------------------"
-echo "Step 9: Run OpenCore-Boot.sh to start macOS"
+echo "Step 9: Launch macOS VM"
 echo "-------------------------------------------------------"
 
 echo "Available scripts:"
