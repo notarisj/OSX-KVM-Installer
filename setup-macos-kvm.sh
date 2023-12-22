@@ -15,9 +15,6 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-# ----------------------------
-# Title: Install Packages
-# ----------------------------
 echo "-------------------------------------------------------"
 echo "Step 1: Install Packages"
 echo "-------------------------------------------------------"
@@ -56,9 +53,6 @@ else
   echo "All required packages are already installed."
 fi
 
-# --------------------------------
-# Title: Clone OSX-KVM Repository
-# --------------------------------
 echo "-------------------------------------------------------"
 echo "Step 2: Clone the OSX-KVM repository"
 echo "-------------------------------------------------------"
@@ -89,9 +83,6 @@ fi
 
 cd "$OSX_KVM_DIR" || { echo "Failed to change to OSX-KVM directory. Exiting."; exit 1; }
 
-# --------------------------
-# Title: Configure KVM for CPU type
-# --------------------------
 echo "-------------------------------------------------------"
 echo "Step 3: Configure KVM for CPU type"
 echo "-------------------------------------------------------"
@@ -118,9 +109,6 @@ else
     esac
 fi
 
-# -------------------------
-# Title: Add current user to KVM groups
-# -------------------------
 echo "-------------------------------------------------------"
 echo "Step 4: Add current user to KVM groups"
 echo "-------------------------------------------------------"
@@ -134,9 +122,6 @@ else
     echo "User added in the required groups."
 fi
 
-# ---------------------------------
-# Title: Fetch macOS Installation
-# ---------------------------------
 echo "-------------------------------------------------------"
 echo "Step 5: Fetch macOS Installation"
 echo "-------------------------------------------------------"
@@ -146,9 +131,6 @@ else
     echo "BaseSystem.dmg already exists. Skipping download."
 fi
 
-# ------------------------------
-# Title: Convert dmg to img
-# ------------------------------
 echo "-------------------------------------------------------"
 echo "Step 6: Convert dmg to img"
 echo "-------------------------------------------------------"
@@ -158,9 +140,6 @@ else
     echo "BaseSystem.img already exists. Skipping conversion."
 fi
 
-# -------------------------------------------
-# Title: Create macOS Disk Image
-# -------------------------------------------
 echo "-------------------------------------------------------"
 echo "Step 7: Create macOS Disk Image"
 echo "-------------------------------------------------------"
@@ -173,10 +152,6 @@ else
     echo "Disk image already exists. Skipping creation."
 fi
 
-
-# ------------------------------------
-# Title: Customize VM's Resources
-# ------------------------------------
 echo "-------------------------------------------------------"
 echo "Step 8: Customize the VM's resources"
 echo "-------------------------------------------------------"
@@ -261,9 +236,6 @@ for ((i = 0; i < ${#user_changes[@]}; i += 5)); do
     sed -i "/^CPU_THREADS=/s/=\"[^\"]*\"/=\"$cpu_threads\"/" "$file"
 done
 
-# -------------------------
-# Title: Launch macOS VM
-# -------------------------
 echo "-------------------------------------------------------"
 echo "Step 9: Launch macOS VM"
 echo "-------------------------------------------------------"
